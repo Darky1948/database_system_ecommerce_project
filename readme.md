@@ -15,12 +15,11 @@ In our work, our database management system will guarantee that all the transact
 
 ## Environment
 
-**Netbeans PHP IDE**
-**Github**
-**Uwamp**
-
-**Technologies used :** 
-    - HTML/CSS 
-    - PHP(PDO) 
-    - MySQL
-    - Frameworks : Jquery & Bootstrap
+- **Netbeans PHP IDE**
+- **Github**
+- **Uwamp**
+- **Technologies used :** 
+  - HTML/CSS 
+  - PHP(PDO) 
+  - MySQL
+  - Frameworks : Jquery & Bootstrap    - Frameworks : Jquery & Bootstrap
