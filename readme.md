@@ -10,5 +10,5 @@ We are going to build an online shopping system that permits a customer to submi
 
 In our work, our database management system will guarantee that all the transactions within orders are real-time reflected to the database. This leads to reducing orders errors such as order duplication, insufficient items in database and customers holding the same item at the same time.
 
-**Related paper :** [SAGAS Hector Garcia-Molina & Kenneth Salem]
+**Related paper :** [SAGAS Hector Garcia-Molina & Kenneth Salem](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf)
  
