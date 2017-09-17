@@ -18,6 +18,7 @@ In our work, our database management system will guarantee that all the transact
 - **Netbeans PHP IDE** [link](https://netbeans.org/features/php/)
 - **Github** [link](https://github.com/)
 - **Uwamp** [link](https://www.uwamp.com/fr/)
+- **ArgoUML** [link](http://argouml.tigris.org/)
 - **Technologies used :** 
   - HTML/CSS 
   - PHP(PDO) 
