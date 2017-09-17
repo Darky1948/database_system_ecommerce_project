@@ -23,4 +23,4 @@ In our work, our database management system will guarantee that all the transact
   - HTML/CSS 
   - PHP(PDO) 
   - MySQL
-  - Frameworks : Jquery & Bootstrap - Frameworks : Jquery & Bootstrap
+  - Frameworks : Jquery & Bootstrap
