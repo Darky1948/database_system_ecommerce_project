@@ -12,3 +12,15 @@ In our work, our database management system will guarantee that all the transact
 
 **Related paper :** [SAGAS Hector Garcia-Molina & Kenneth Salem](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf)
  
+
+## Environment
+
+**Netbeans PHP IDE**
+**Github**
+**Uwamp**
+
+**Technologies used :** 
+    - HTML/CSS 
+    - PHP(PDO) 
+    - MySQL
+    - Frameworks : Jquery & Bootstrap
