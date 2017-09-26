@@ -34,18 +34,18 @@ CREATE TABLE CUSTOMER (
     postalcode VARCHAR(30) NOT NULL,
     city VARCHAR(30) NOT NULL,
     country VARCHAR(30) NOT NULL,
-    phone VARCHAR(30) NOT NULL,
     email VARCHAR(50),
+    phone VARCHAR(30) NOT NULL,
     password VARCHAR(50),
-    reg_date TIMESTAMP,
-)
+    reg_date TIMESTAMP
+);
 
 CREATE TABLE ORDERS (
     idOrder INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     quantity INT UNSIGNED,
     Ordering_date TIMESTAMP,
-    idCustomer INT
-)
+    idCustomer INT UNSIGNED
+);
 
 ALTER TABLE ORDERS 
 ADD CONSTRAINT FK_CustomerOrder
@@ -60,21 +60,21 @@ CREATE TABLE ADMIN (
     lastname VARCHAR(30),
     firstname VARCHAR(30),
     reg_date TIMESTAMP
-)
+);
 
 CREATE TABLE CATEGORY (
     idCategory INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     libelle VARCHAR(30) NOT NULL,
     reg_date TIMESTAMP
-)
+);
 
 CREATE TABLE ARTICLETYPE (
     idType INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     libelle VARCHAR(30) NOT NULL,
     valid VARCHAR(30) NOT NULL,
     reg_date TIMESTAMP,
-    idCategory INT(6)
-)
+    idCategory INT(6) UNSIGNED
+);
 
 ALTER TABLE ARTICLETYPE 
 ADD CONSTRAINT FK_TypeCatergory
@@ -83,15 +83,15 @@ FOREIGN KEY (idCategory) REFERENCES CATEGORY(idCategory);
 CREATE TABLE MEDIA (
     idMedia INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     file_path VARCHAR(30),
-    file_name VARCHAR(,
+    file_name VARCHAR(30),
     reg_date TIMESTAMP
-)
+);
 
 CREATE TABLE BRAND (
     idBrand INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     brand_name VARCHAR(30) NOT NULL,
     reg_date TIMESTAMP
-)
+);
 
 
 CREATE TABLE ARTICLE (
@@ -105,15 +105,15 @@ CREATE TABLE ARTICLE (
     idType INT(6) UNSIGNED,
     idBrand INT(6) UNSIGNED,
     idMedia INT(6) UNSIGNED
-)
+);
 
-CREATE TABLE COMMENT {
-    idComment (6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE COMMENT (
+    idComment INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     text varchar(500),
     reg_date TIMESTAMP,
-    idArticle INT(6),
-    idCustomer INT(6),
-}
+    idArticle INT(6) UNSIGNED,
+    idCustomer INT(6) UNSIGNED
+);
 
 ALTER TABLE COMMENT 
 ADD CONSTRAINT FK_CustomerComment
@@ -125,11 +125,11 @@ FOREIGN KEY (idArticle) REFERENCES ARTICLE(idArticle);
 
 CREATE TABLE RECOMMANDEDARTICLE (
     idRecommendedArticle INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    idArticle1 INT(6) NOT NULL,
-    idArticle2 INT(6) NOT NULL,
+    idArticle1 INT(6) UNSIGNED NOT NULL,
+    idArticle2 INT(6) UNSIGNED NOT NULL,
     percentage DECIMAL,
-    reg_date TIMESTAMP, 
-)
+    reg_date TIMESTAMP
+);
 
 ALTER TABLE RECOMMANDEDARTICLE
 ADD CONSTRAINT UC_RECOMMANDEDARTICLE 
@@ -142,13 +142,21 @@ REFERENCES ARTICLE(idArticle);
 
 ALTER TABLE RECOMMANDEDARTICLE 
 ADD CONSTRAINT FK_Article2RecommendedArticle
-FOREIGN KEY (idArticl2) 
+FOREIGN KEY (idArticle2) 
 REFERENCES ARTICLE(idArticle);
 
 CREATE TABLE CART (
     idCustomer INT(6) UNSIGNED,
-    idArticle INT(6) UNSIGNED,
-    FOREIGN KEY (idCustomer) REFERENCES CUSTOMER(idCustomer),
-    FOREIGN KEY (idArticle) REFERENCES ARTICLE(idArticle),
-    FOREIGN KEY (idCustomer, idArticle)
-)
+    idArticle INT(6) UNSIGNED
+);
+
+ALTER TABLE CART
+ADD CONSTRAINT FK_CartCustomer
+FOREIGN KEY (idCustomer) REFERENCES CUSTOMER(idCustomer);
+
+ALTER TABLE CART
+ADD CONSTRAINT FK_CartArticle
+FOREIGN KEY (idArticle) REFERENCES ARTICLE(idArticle);
+
+ALTER TABLE CART
+ADD CONSTRAINT PK_Cart PRIMARY KEY (idCustomer, idArticle);
