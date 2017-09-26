@@ -18,7 +18,7 @@
 
     /* PARAMETERS */
     define('SHOW_ERRORS', true);
-    define('DEFAULT_PAGE', 'connexion');
+    define('DEFAULT_PAGE', 'home');
     define('TIMEOUT_CONNEXION', 2592000);
     define('TIMEOUT_MOBILE_SESSION', 3600);
     define('NB_ELEMENT_PAGE', 10);

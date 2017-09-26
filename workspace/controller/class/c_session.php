@@ -5,20 +5,20 @@
         private $texte;
 
         public function __construct($p_modele, $ptexte){
-                $this->modele = $p_modele;
-                $this->texte = $ptexte;
+            $this->modele = $p_modele;
+            $this->texte = $ptexte;
         }
 
         /* Vérifie la variable de session id */
-                public function session(){
-                        if(!isset($_SESSION['id'])){
-                                $_SESSION['id'] = -1;
-                        }
+        public function session(){
+            if(!isset($_SESSION['id'])){
+                $_SESSION['id'] = -1;
+            }
             if(!isset($_SESSION['token'])){
                 $_SESSION['token'] = uniqid(rand(), true); //On génére un jeton totalement unique (c'est capital :D)
             }
             $_SESSION['token_time'] = time(); //On enregistre aussi le timestamp correspondant au moment de la création du token
-                }
+        }
 
         /* Prend en paramètre l'id de session mobile (ou 0) et renvoie l'id après vérification */
         public function session_mobile($id){
@@ -45,11 +45,11 @@
 
         /* SESSION TIME OUT */
         public function sesion_timeout(){
-                $tempsActuel = time();
+            $tempsActuel = time();
 
-                if($tempsActuel - $_SESSION['time'] >= 600){
-                        header('Location: deconnexion');
-                }
+            if($tempsActuel - $_SESSION['time'] >= 600){
+                    header('Location: deconnexion');
+            }
         }
 
         /* Verification du token */
