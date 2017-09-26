@@ -1,0 +1,130 @@
+/*
+The MIT License
+
+Copyright 2017 Kristen VIGUIER.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+/* 
+    Created on : 26 sept. 2017, 16:35:08
+    Author     : Kristen VIGUIER
+*/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+/*
+*   ## FOOTER ##
+*/
+
+.footer {
+    margin-top: 2%;
+    padding:2%;
+    position: absolute;
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.footer h4 {
+    font-weight: 700; /* equivalent to weight : bold */
+}
+
+.footer hr { 
+    background-color: black;
+    height: 1px;
+    border: 0;
+}
+
+.footer .payment{
+    margin:0px;
+    padding:0px;
+    list-style-type:none
+}
+.footer .payment li{
+    list-style-type:none;
+    text-decoration: none;
+    display: inline-block;
+    float: left;
+    font-size: 50px;
+    padding: 10px 10px;
+}
+
+.footer .category a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 1px;
+    border-radius:4px;
+    margin-top: 6px;
+    background-color: black;
+    border: solid 1px #fff;
+}
+
+.footer .category a:hover {
+    background-color: #337ab7;
+}
+
+.footer .social li {
+    background: none repeat scroll 0 0 #B5B5B5;
+    list-style-type:none;
+    border: 2px solid #B5B5B5;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 8px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 36px;
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+}
+.footer .social li:hover {
+    transform: scale(1.15) rotate(360deg);
+    -webkit-transform: scale(1.1) rotate(360deg);
+    -moz-transform: scale(1.1) rotate(360deg);
+    -ms-transform: scale(1.1) rotate(360deg);
+    -o-transform: scale(1.1) rotate(360deg);
+}
+.footer .social li a {
+    color: #EDEFF1;
+}
+.footer .social li:hover {
+    border: 2px solid #2c3e50;
+    background: #2c3e50;
+}
+.footer .social li a i {
+    font-size: 16px;
+    margin: 0 0 0 5px;
+    color: #EDEFF1 !important;
+}

@@ -38,7 +38,7 @@
     define('STYLE_CSS', ADRESSE_ABSOLUE_URL . 'view/css/style.css');
     define('IMAGES_STYLE', ADRESSE_ABSOLUE_URL .  'view/images/');
     
-    define('FAVICON', ADRESSE_ABSOLUE_URL . 'vue/images/favicon.ico');
+    define('FAVICON', ADRESSE_ABSOLUE_URL . 'view/images/favicon.ico');
 
     /* CONFIGURATION FILES INCLUDES */
     require_once('existing_pages.php');
