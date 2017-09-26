@@ -95,11 +95,16 @@ CREATE TABLE BRAND (
 
 
 CREATE TABLE ARTICLE (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstname VARCHAR(30) NOT NULL,
-    lastname VARCHAR(30) NOT NULL,
-    email VARCHAR(50),
-    reg_date TIMESTAMP
+    idArticle INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    libelle VARCHAR(30) NOT NULL,
+    price DECIMAL NOT NULL,
+    quantity INT UNSIGNED,
+    article_size VARCHAR(30),
+    color VARCHAR(30),
+    reg_date TIMESTAMP,
+    idType INT(6) UNSIGNED,
+    idBrand INT(6) UNSIGNED,
+    idMedia INT(6) UNSIGNED
 )
 
 CREATE TABLE COMMENT {
