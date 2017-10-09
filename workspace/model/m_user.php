@@ -1,6 +1,7 @@
 <?php
-    /*
-     * User model 09/17/2017
+    /* 
+     * Author Kristen VIGUIER
+     * Copyright 2017 Kristen VIGUIER.
      */
     class m_user {
 

@@ -1,7 +1,10 @@
 <?php
-    
+    /* 
+    * Author Kristen VIGUIER
+    * Copyright 2017 Kristen VIGUIER.
+    */
+
     /***
-     * index.php 09/16/2017
      * This is the entry point on the website.
      * Contains parameters files.
      * Thanks to it we can do MVC and call controllers and views depend on the page that is asked by the client.

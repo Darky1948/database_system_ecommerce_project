@@ -1,4 +1,8 @@
 <?php
+    /* 
+     * Author Kristen VIGUIER
+     * Copyright 2017 Kristen VIGUIER.
+     */
     class m_session{
 
         private $base_de_donnee;
