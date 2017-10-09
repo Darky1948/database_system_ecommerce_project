@@ -80,3 +80,4 @@ class m_articleType {
         return $add_articles->execute();
     }
 }
+?>
