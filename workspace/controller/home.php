@@ -15,7 +15,7 @@
     $t_text = new t_text();
 
     $m_session = new m_session($database);
-    $m_user = new m_user($database);
+    $m_user = new m_customer($database);
     $c_session = new c_session($m_session, $t_text);
     $c_user = new c_user($m_user);
 

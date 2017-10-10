@@ -4,7 +4,9 @@
  * Author Kristen VIGUIER
  * Copyright 2017 Kristen VIGUIER.
  */
+
 class m_comment {
+    
     private $database;
 
     // Constructor

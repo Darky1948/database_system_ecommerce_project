@@ -17,7 +17,7 @@
     $m_session = new m_session($database);
     $c_session = new c_session($m_session, $t_texte);
 
-    $m_utilisateur = new m_user($database);
+    $m_utilisateur = new m_customer($database);
     $c_utilisateur = new c_utilisateur($m_utilisateur);
 
     /**** VERIF SESSION ****/

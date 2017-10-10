@@ -4,11 +4,13 @@
  * Author Kristen VIGUIER
  * Copyright 2017 Kristen VIGUIER.
  */
+
 class m_articleType {
+    
     private $database;
     
     public function __construct($database) {
-        $this->$database = $database;
+        $this->database = $database;
     }
     
     /*
