@@ -39,13 +39,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">Articles</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li class="active"><a href="<?php echo ADRESSE_ABSOLUE_URL . 'home'?>">Home</a></li>
+                    <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'articles'?>">Articles</a></li>
+                    <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'contact'?>">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">My cart</a></li>
-                    <li><a href="#">Sign in</a></li>
+                    <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'myCart'?>">My cart</a></li>
+                    <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'signin'?>">Sign in</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

@@ -6,7 +6,7 @@
      */
 	
     $existing_pages = array(
-                    'error', 'home', 'connection', 'logout'
+                    'error', 'home', 'connection', 'logout', 'article'
             );
     $existing_web_services = array(
             );

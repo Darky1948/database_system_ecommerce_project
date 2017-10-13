@@ -42,6 +42,21 @@ class m_article {
 
         return $retour;
     }
+    
+    /*
+     * Get an article by its idType.
+     */
+    public function get_article_by_type($idType){
+        $get_article = $this->database->prepare('SELECT * FROM article WHERE idType = ?');
+
+        $get_article->bindValue(1, $idType, PDO::PARAM_INT);
+        $get_article->execute();
+
+        $retour = $get_article->fetchAll(PDO::FETCH_OBJ);
+        $get_article->closeCursor();
+
+        return $retour;
+    }
 
     /*
      * Return a set article by page.
@@ -63,8 +78,8 @@ class m_article {
     /*
      * Return the three last article.
      */
-    public function get_three_last_article() {
-        $get_three_last_article = $this->database->prepare('SELECT * FROM article ORDER BY reg_date DESC LIMIT 3');
+    public function get_last_articles() {
+        $get_three_last_article = $this->database->prepare('SELECT * FROM article ORDER BY reg_date DESC LIMIT 4');
         $get_three_last_article->execute();
 
         $object = $get_three_last_article->fetchAll(PDO::FETCH_OBJ);

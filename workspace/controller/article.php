@@ -1,4 +1,9 @@
 <?php
+    /* 
+     * Author Kristen VIGUIER
+     * Copyright 2017 Kristen VIGUIER.
+     */
+
     /**** SESSION ****/
     session_start();
 
@@ -23,20 +28,33 @@
     $m_customer = new m_customer($database);
     $c_session = new c_session($m_session, $t_text);
     $c_user = new c_user($m_customer);
-    
+
     $m_article = new m_article($database);
     $m_articleType = new m_articleType($database);
     $m_brand = new m_brand($database);
     $m_category = new m_category($database);
     $m_media = new m_media($database);
-    
+
     /**** CHECKING SESSION ****/
     $c_session->session();
-      
-    $page_name = 'Home';
-    
-    
+
+    $page_name = 'Article';
+
+
     /**** TREATMENT ***/
-    $lastArticles = $m_article->get_last_articles();
-    $articlesType = $m_articleType->get_articles_type();
+    
+    
+    /*
+     * Getting the URL param and check if it's an ID.
+     */
+    if(!empty($url_param[0])) {
+        if(preg_match('#^[0-9]{1,}$#', $url_param[0])) {
+                $idArticle = $url_param[0];
+        } else { header('Location: '.ADRESSE_ABSOLUE_URL.'error'); }
+    } else { header('Location: '.ADRESSE_ABSOLUE_URL.'error'); }
+    
+    
+    //Get the corresponding article
+    $article = $m_article->get_article($idArticle);
 ?>
+
