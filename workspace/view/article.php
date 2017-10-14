@@ -1,5 +1,3 @@
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -22,7 +20,10 @@
             </div>
             
             <div class="col-md-12">
-                <button class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to cart</button>
+                <form role="form" id="cart-form" name="cart-form" class="form" action="" method="POST">
+                    <input type="hidden" name="idArticle" id="idArticle" value="<?php echo $article->idArticle; ?>">
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to cart</button>
+                </form>
             </div>
         </div>
         
@@ -32,7 +33,33 @@
 <!-- comments -->
 
 <div class="container">
-    <div class="row">
-        s
-    </div>
+    
+    <!-- form -->
+    <form role="form" id="contact-form" class="contact-form" action="" method="POST">
+        <div class="row well">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea class="form-control textarea" rows="3" name="message" id="message" placeholder="Message"></textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-info pull-right">Leave a comment</button>
+            </div>
+        </div>
+    </form>
+    
+    <!-- commentaires -->
+    <?php
+        $comments = $m_comment->get_comments_by_article($article->idArticle);
+        foreach ($comments as $comment) {
+    ?>
+            <div class="row well">
+                <div class="comment-box">
+                    <h4 class="title"><?php echo $m_customer->get_customer($comment->idCustomer)->firstname . ' ' . $m_customer->get_customer($comment->idCustomer)->lastname; ?></h4>
+                    <p><?php echo $comment->text; ?>
+                </div>
+            </div>
+    <?php
+        } // end of the for
+    ?>
 </div>

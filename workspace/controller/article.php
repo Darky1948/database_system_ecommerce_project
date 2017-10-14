@@ -15,12 +15,12 @@
     /**** MODELS ****/
     require_once('model/m_session.php');
     require_once('model/m_customer.php');
-    require_once ('model/m_article.php');
-    require_once ('model/m_articleType.php');
-    require_once ('model/m_brand.php');
-    require_once ('model/m_category.php');
-    require_once ('model/m_media.php');
-
+    require_once('model/m_article.php');
+    require_once('model/m_articleType.php');
+    require_once('model/m_brand.php');
+    require_once('model/m_category.php');
+    require_once('model/m_media.php');
+    require_once('model/m_comment.php');
     /**** OBJECTS ****/
     $t_text = new t_text();
 
@@ -34,6 +34,7 @@
     $m_brand = new m_brand($database);
     $m_category = new m_category($database);
     $m_media = new m_media($database);
+    $m_comment = new m_comment($database);
 
     /**** CHECKING SESSION ****/
     $c_session->session();
