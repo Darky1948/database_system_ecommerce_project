@@ -14,7 +14,7 @@
                         <h4 class="text-left">Contact</h4>
                     </div>
                     <div class="col-md-3">
-                        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi</p>
+                        <p class="text-left">Online shopping system that permits a customer to submit online orders for items from an online store. The system will accept the customer's submission of a purchase order for the item in response to both quantity and time of submission and perform a real time decrease in item quantity in the database.</p>
                     </div>
                     <div class="col-md-3 payment">
                         <ul>
