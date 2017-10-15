@@ -43,16 +43,16 @@ class m_orders {
     }
     
     /*
-     * Get an order by its id.
+     * Get an order by its customer id.
      */
     public function get_order_by_customer_id($idCustomer){
-        $get_order = $this->database->prepare('SELECT * FROM orders WHERE idCustomer = ?');
+        $get_order_by_customer_id = $this->database->prepare('SELECT * FROM orders WHERE idCustomer = ?');
 
-        $get_order->bindValue(1, $idCustomer, PDO::PARAM_INT);
-        $get_order->execute();
+        $get_order_by_customer_id->bindValue(1, $idCustomer, PDO::PARAM_INT);
+        $get_order_by_customer_id->execute();
 
-        $retour = $get_order->fetchAll(PDO::FETCH_OBJ);
-        $get_order->closeCursor();
+        $retour = $get_order_by_customer_id->fetchAll(PDO::FETCH_OBJ);
+        $get_order_by_customer_id->closeCursor();
 
         return $retour;
     }

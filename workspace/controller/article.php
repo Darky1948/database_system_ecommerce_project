@@ -11,6 +11,7 @@
     require_once('class/c_session.php');
     require_once('class/t_text.php');
     require_once('class/c_user.php');
+    require_once('class/c_cart.php');
 
     /**** MODELS ****/
     require_once('model/m_session.php');
@@ -21,6 +22,7 @@
     require_once('model/m_category.php');
     require_once('model/m_media.php');
     require_once('model/m_comment.php');
+    require_once('model/m_cart.php');
     
     /**** OBJECTS ****/
     $t_text = new t_text();
@@ -36,6 +38,9 @@
     $m_category = new m_category($database);
     $m_media = new m_media($database);
     $m_comment = new m_comment($database);
+    
+    $m_cart = new m_cart($database);
+    $c_cart = new c_cart($m_article);
 
     /**** CHECKING SESSION ****/
     $c_session->session();
@@ -62,8 +67,36 @@
     /*
      * Handle the add cart action
      */
-    
+   
     var_dump($_POST);
+    
+    $return = -1;
+    if(isset($_POST['quantity']) && isset($_POST['idArticle'])) {
+        $quantity = $_POST['quantity'];
+        $articleForm = $m_article->get_article($idArticle);
+        
+        // First basical check
+        if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
+            $cartQuantity = $m_cart->count_cart_article($_SESSION['id'], $idArticle);
+            
+            $realAvailableStock = $articleForm->quantity - $cartQuantity;
 
+            // That means there is enough stock
+            if($quantity <= $realAvailableStock) {
+                // Creating the cart
+                $c_cart->creatingCart();
+                
+                // Adding a product to our cart
+                $c_cart->addProduct($articleForm->libelle, $quantity, $articleForm->price);
+              
+            }
+        }else {
+            //error
+        }
+        
+    } else {
+        //error
+    }
+    var_dump($_SESSION);
 ?>
 
