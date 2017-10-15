@@ -1,6 +1,6 @@
 <div class="container" style="width:30%;">
     <div class="row">
-	<form action="" method="POST" >
+	<form action="" method="POST">
             <div class="form-group">
                 <label for="login">Email</label>
                 <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>

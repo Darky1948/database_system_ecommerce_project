@@ -44,7 +44,6 @@
                     <li <?php if($page=='contact'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'contact'?>">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li <?php if($page=='myCart'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'myCart'?>">My cart</a></li>
                     <?php 
                         if(isset($_SESSION['id']) && $_SESSION['id'] == -1) {
                     ?>
@@ -52,7 +51,17 @@
                     <?php
                         } else {
                     ?>
-                            <li <?php if($page=='account'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'account'?>">Account</a></li>
+                     <li <?php if($page=='myCart'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'myCart'?>">My cart</a></li>
+                    <!-- ##DROPDOWN ## -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'account'?>">Personal information</a></li>
+                                <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'orders'?>">Orders</a></li>
+                                <li class="divider"></li>
+                                <li><a href="<?php echo ADRESSE_ABSOLUE_URL . 'logout'?>">Log out</a></li>
+                            </ul>
+                        </li>
                     <?php
                         }
                     ?>
@@ -60,3 +69,4 @@
             </div><!--/.nav-collapse -->
         </div>
     </nav>
+    

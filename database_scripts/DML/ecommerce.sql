@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Dim 15 Octobre 2017 à 12:20
+-- Généré le :  Dim 15 Octobre 2017 à 15:11
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -165,7 +165,9 @@ INSERT INTO `brand` (`idBrand`, `brand_name`, `reg_date`) VALUES
 
 CREATE TABLE `cart` (
   `idCustomer` int(6) UNSIGNED NOT NULL,
-  `idArticle` int(6) UNSIGNED NOT NULL
+  `idArticle` int(6) UNSIGNED NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL,
+  `reg_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -432,6 +434,13 @@ CREATE TABLE `orders` (
   `idArticle` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `orders`
+--
+
+INSERT INTO `orders` (`idOrder`, `quantity`, `Ordering_date`, `idCustomer`, `idArticle`) VALUES
+(1, 1, '2017-10-15 13:53:24', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -572,7 +581,7 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `idOrder` int(6) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idOrder` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `recommandedarticle`
 --

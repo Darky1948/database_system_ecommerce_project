@@ -20,8 +20,19 @@
             
             <div class="col-md-12">
                 <form role="form" id="cart-form" name="cart-form" class="form" action="" method="POST">
+                    <div class="form-group">
+                        <label for="sel1">Select a quantity :</label>
+                        <select class="input-xlarge" id="quantity" name="quantity">
+                            <?php
+                                $quantity = $article->quantity;
+                                for ($index = 1; $index <= $quantity; $index++) {
+                                    echo '<option>'.$index.'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
                     <input type="hidden" name="idArticle" id="idArticle" value="<?php echo $article->idArticle; ?>">
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to cart</button>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
                 </form>
             </div>
         </div>
