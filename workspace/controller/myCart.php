@@ -50,10 +50,5 @@
 
     /**** TREATMENT ***/    
     //var_dump($_SESSION);
-    
-    $articles = array();
-    
-    
-
-    
+   
 ?>

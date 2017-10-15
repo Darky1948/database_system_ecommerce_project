@@ -72,6 +72,11 @@
         $quantity = $_POST['quantity'];
         $articleForm = $m_article->get_article($idArticle);
         
+        
+        if($c_cart->creatingCart()) {
+            // Vérifie si on a déjà cet article et si c'est le cas comtpé combien on a déjà.
+        }
+        
         // First basical check
         if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
             $cartQuantity = $m_cart->count_cart_article($_SESSION['id'], $idArticle);
