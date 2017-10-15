@@ -45,4 +45,6 @@
     require_once('upload_file_config.php');
     require_once('return_codes.php');
     
+    define('ESTIMATED_SHIPPING', 6.94);
+    
 ?>

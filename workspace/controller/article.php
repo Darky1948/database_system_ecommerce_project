@@ -66,10 +66,7 @@
     
     /*
      * Handle the add cart action
-     */
-   
-    var_dump($_POST);
-    
+     */  
     $return = -1;
     if(isset($_POST['quantity']) && isset($_POST['idArticle'])) {
         $quantity = $_POST['quantity'];
@@ -87,8 +84,9 @@
                 $c_cart->creatingCart();
                 
                 // Adding a product to our cart
-                $c_cart->addProduct($articleForm->libelle, $quantity, $articleForm->price);
-              
+                $c_cart->addProduct($articleForm->idArticle, $quantity, $articleForm->price);
+                
+                header('Location: '.ADRESSE_ABSOLUE_URL.'myCart');
             }
         }else {
             //error
@@ -97,6 +95,6 @@
     } else {
         //error
     }
-    var_dump($_SESSION);
+
 ?>
 

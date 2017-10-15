@@ -11,6 +11,7 @@
     require_once('class/c_session.php');
     require_once('class/t_text.php');
     require_once('class/c_user.php');
+    require_once('class/c_cart.php');
 
     /**** MODELS ****/
     require_once('model/m_session.php');
@@ -20,7 +21,9 @@
     require_once('model/m_brand.php');
     require_once('model/m_category.php');
     require_once('model/m_media.php');
-
+    require_once('model/m_comment.php');
+    require_once('model/m_cart.php');
+    
     /**** OBJECTS ****/
     $t_text = new t_text();
 
@@ -34,6 +37,10 @@
     $m_brand = new m_brand($database);
     $m_category = new m_category($database);
     $m_media = new m_media($database);
+    $m_comment = new m_comment($database);
+    
+    $m_cart = new m_cart($database);
+    $c_cart = new c_cart($m_article);
 
     /**** CHECKING SESSION ****/
     $c_session->session();
@@ -42,7 +49,10 @@
 
 
     /**** TREATMENT ***/    
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
+    
+    $articles = array();
+    
     
 
     
