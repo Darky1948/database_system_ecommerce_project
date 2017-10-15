@@ -2,7 +2,7 @@
     class t_text{
 		
         /* Prend en paramètre un timestamp et retourne une date relative */
-        public function quand($timestamp){
+        public function when($timestamp){
             date_default_timezone_set('Europe/Paris');
             $superdate = date('d F Y', $timestamp);
 

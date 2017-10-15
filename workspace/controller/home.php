@@ -39,4 +39,5 @@
     /**** TREATMENT ***/
     $lastArticles = $m_article->get_last_articles();
     $articlesType = $m_articleType->get_articles_type();
+    
 ?>

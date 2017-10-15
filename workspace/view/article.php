@@ -6,13 +6,12 @@
             </div>
         </div>
         <div class="col-md-6 well">
-            <h3><?php echo $article->libelle; ?></h3>
+            <h3><?php echo $article->libelle; ?></h3><p><small>The <?php echo $article->reg_date; ?></small></p>
             <div class="col-md-6">
                 <p>Price : <?php echo $article->price; ?> $</p>
                 <p>Size : <?php echo $article->article_size; ?></p>
                 <p>Color : <?php echo $article->color; ?></p>
                 <p>Stock : <?php echo $article->quantity; ?></p>
-                
             </div>
             <div class="col-md-6">
                  <p>Brand : <?php echo $m_brand->get_brand($article->idBrand)->brand_name; ?></p>
@@ -55,7 +54,7 @@
     ?>
             <div class="row well">
                 <div class="comment-box">
-                    <h4 class="title"><?php echo $m_customer->get_customer($comment->idCustomer)->firstname . ' ' . $m_customer->get_customer($comment->idCustomer)->lastname; ?></h4>
+                    <h4 class="title"><?php echo $m_customer->get_customer($comment->idCustomer)->firstname . ' ' . $m_customer->get_customer($comment->idCustomer)->lastname; ?> <small>The <?php echo $comment->reg_date; ?></small></h4>
                     <p><?php echo $comment->text; ?>
                 </div>
             </div>
