@@ -20,8 +20,7 @@
     require_once('model/m_brand.php');
     require_once('model/m_category.php');
     require_once('model/m_media.php');
-    require_once('model/m_comment.php');
-    
+
     /**** OBJECTS ****/
     $t_text = new t_text();
 
@@ -35,28 +34,27 @@
     $m_brand = new m_brand($database);
     $m_category = new m_category($database);
     $m_media = new m_media($database);
-    $m_comment = new m_comment($database);
 
     /**** CHECKING SESSION ****/
     $c_session->session();
 
-    $page_name = 'Article';
+    $page_name = 'Articles';
 
 
-    /**** TREATMENT ***/
-    
-    
-    /*
-     * Getting the URL param and check if it's an ID.
-     */
+    /**** TREATMENT ***/    
     if(!empty($url_param[0])) {
-        if(preg_match('#^[0-9]{1,}$#', $url_param[0])) {
-                $idArticle = $url_param[0];
-        } else { header('Location: '.ADRESSE_ABSOLUE_URL.'error'); }
-    } else { header('Location: '.ADRESSE_ABSOLUE_URL.'error'); }
-    
-    
-    //Get the corresponding article
-    $article = $m_article->get_article($idArticle);
-?>
+            if(preg_match('#^[0-9]{1,}$#', $url_param[0])) {
+                    $num_page = $url_param[0];
+            } else { $num_page = 1; }
+    } else { $num_page = 1; }
 
+    /* If there is a research */
+    if(isset($_POST['rechercheArticle']) && !is_null($_POST['rechercheArticle'])){
+            $recherche = htmlspecialchars($_POST['rechercheArticle']);
+            $valeurInputTest = $recherche;
+            $liste_articles = $m_article->rechercher_articles($recherche);
+    }else{ // sinon on liste normalement
+            $liste_articles = $m_article->get_article_by_page($num_page);
+    }
+    
+?>

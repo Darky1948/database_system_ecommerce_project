@@ -6,16 +6,16 @@
      */
 
     /* RETURN CODES */
-    $code_retour[1]  = '';
-    $code_retour[2]  = '';
-    $code_retour[3]  = '';
-    $code_retour[4]  = '';
-    $code_retour[5] = '';
-    $code_retour[6] = '';
-    $code_retour[7] = '';
-    $code_retour[8] = '';
-    $code_retour[9] = '';
-    $code_retour[10] = '';
-    $code_retour[11] = '';
-    $code_retour[12] = '';
+    $return_codes[1]  = 'User login or password wrong !';
+    $return_codes[2]  = 'User login or password empty';
+    $return_codes[3]  = '';
+    $return_codes[4]  = '';
+    $return_codes[5] = '';
+    $return_codes[6] = '';
+    $return_codes[7] = '';
+    $return_codes[8] = '';
+    $return_codes[9] = '';
+    $return_codes[10] = '';
+    $return_codes[11] = '';
+    $return_codes[12] = '';
 ?>

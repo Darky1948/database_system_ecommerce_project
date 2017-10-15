@@ -45,7 +45,17 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li <?php if($page=='myCart'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'myCart'?>">My cart</a></li>
-                    <li <?php if($page=='signin'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'signin'?>">Sign in</a></li>
+                    <?php 
+                        if(isset($_SESSION['id']) && $_SESSION['id'] == -1) {
+                    ?>
+                            <li <?php if($page=='connection'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'connection'?>">Sign in</a></li>
+                    <?php
+                        } else {
+                    ?>
+                            <li <?php if($page=='account'){ echo 'class="active"'; } ?>><a href="<?php echo ADRESSE_ABSOLUE_URL . 'account'?>">Account</a></li>
+                    <?php
+                        }
+                    ?>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

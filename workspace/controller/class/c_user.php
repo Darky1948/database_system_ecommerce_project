@@ -9,18 +9,17 @@
 
         public function connexion($adresse_email, $password) {
             if(!empty($adresse_email) AND !empty($password)) {
-                $verification = $this->modele->connexion($adresse_email, $password);
+                $verification = $this->modele->connection($adresse_email, $password);
                 if(!empty($verification)){
-                    $_SESSION['id'] = $verification->id;
+                    $_SESSION['id'] = $verification->idCustomer;
                     $_SESSION['time'] = time();
-                    $_SESSION['email'] = $verification->adresse_email;
-                    $_SESSION['is_admin'] = $verification->is_admin;
-                    return 7;
+                    $_SESSION['email'] = $verification->email;
+                    return 0;
                 }else{
-                        return 8;
+                    return 1;
                 }
             } else { 
-                return 9; 
+                return 2; 
             }
         }
 

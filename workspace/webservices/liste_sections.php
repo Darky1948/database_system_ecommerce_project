@@ -14,10 +14,10 @@
 
 
 	/**** OBJETS ****/
-	$t_texte = new t_texte();
+	$t_text = new t_texte();
 	$f_formulaire = new f_formulaire();
 	$m_session = new m_session($database);
-	$c_session = new c_session($m_session, $t_texte);
+	$c_session = new c_session($m_session, $t_text);
 	$m_section = new m_section($database);
 
 

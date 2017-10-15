@@ -43,15 +43,31 @@ class m_orders {
     }
     
     /*
+     * Get an order by its id.
+     */
+    public function get_order_by_customer_id($idCustomer){
+        $get_order = $this->database->prepare('SELECT * FROM orders WHERE idCustomer = ?');
+
+        $get_order->bindValue(1, $idCustomer, PDO::PARAM_INT);
+        $get_order->execute();
+
+        $retour = $get_order->fetchAll(PDO::FETCH_OBJ);
+        $get_order->closeCursor();
+
+        return $retour;
+    }
+    
+    /*
      * Update a order.
      */
-    public function update_order($idOrder, $quantity, $Ordering_date, $idCustomer){
-        $update_order = $this->database->prepare('UPDATE brand SET quantity = ?, Ordering_date = ?, idCustomer = ? WHERE idOrder = ?');
+    public function update_order($idOrder, $quantity, $Ordering_date, $idCustomer, $idArticle){
+        $update_order = $this->database->prepare('UPDATE brand SET quantity = ?, Ordering_date = ?, idCustomer = ?, idArticle = ? WHERE idOrder = ?');
 
         $update_order->bindValue(1, $quantity, PDO::PARAM_INT);
         $update_order->bindValue(2, $Ordering_date, PDO::PARAM_STR);
         $update_order->bindValue(3, $idCustomer, PDO::PARAM_INT);
         $update_order->bindValue(4, $idOrder, PDO::PARAM_INT);
+        $update_order->bindValue(5, $idArticle, PDO::PARAM_INT);
 
         // Return wheter true of false.
         return $update_order->execute();

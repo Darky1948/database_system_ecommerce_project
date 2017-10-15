@@ -136,6 +136,50 @@ class m_article {
 
         return $add_articles->execute();
     }
+    /*
+     * Search article witht the given words
+     */
+    public function searching_articles($search){
+        // Allow to store result inside an array, we delete whitespace
+        $s = explode(" ", $search);
+        // We store our request inside a var that we can modifiy depending on the results
+        $sqlAND = "SELECT * FROM article";
+        $sqlOR = "SELECT * FROM article";
+        $i=0; // index
 
+        // Browsing the array $s
+        foreach($s as $words) {
+            //Avoid SQL injections
+            $words = addslashes($words); 
+
+            if(strlen($words)>3){ // Stopwords (like you of ...) small words 
+                if($i==0){
+                    $sqlAND.= " WHERE ";
+                    $sqlOR.= " WHERE ";
+                }
+                else{
+                    $sqlAND.= " AND ";
+                    $sqlOR.= " OR ";
+                }
+                // We finally set our sql request
+                $sqlAND.="libelle like '%$words%'";
+                $sqlOR.="libelle like '%$words%'";
+             
+                $i++;
+            }
+
+            // UNION of both request AND & OR
+            $sql = $sqlAND ." UNION ".$sqlOR;
+
+            // Request treatment
+            $searching_articles = $this->database->prepare($sql);
+            $searching_articles->execute();
+
+            $return = $searching_articles->fetchAll(PDO::FETCH_OBJ);
+            $searching_articles->closeCursor();
+
+            return $return;
+        }
+    }
 }
 ?>

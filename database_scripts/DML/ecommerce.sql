@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Sam 14 Octobre 2017 à 20:31
+-- Généré le :  Dim 15 Octobre 2017 à 12:20
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -428,7 +428,8 @@ CREATE TABLE `orders` (
   `idOrder` int(6) UNSIGNED NOT NULL,
   `quantity` int(10) UNSIGNED DEFAULT NULL,
   `Ordering_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `idCustomer` int(10) UNSIGNED DEFAULT NULL
+  `idCustomer` int(10) UNSIGNED DEFAULT NULL,
+  `idArticle` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -512,7 +513,8 @@ ALTER TABLE `media`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`idOrder`),
-  ADD KEY `FK_CustomerOrder` (`idCustomer`);
+  ADD KEY `FK_CustomerOrder` (`idCustomer`),
+  ADD KEY `FK_ArticleOrder` (`idArticle`);
 
 --
 -- Index pour la table `recommandedarticle`
@@ -604,6 +606,7 @@ ALTER TABLE `comment`
 -- Contraintes pour la table `orders`
 --
 ALTER TABLE `orders`
+  ADD CONSTRAINT `FK_ArticleOrder` FOREIGN KEY (`idArticle`) REFERENCES `article` (`idArticle`),
   ADD CONSTRAINT `FK_CustomerOrder` FOREIGN KEY (`idCustomer`) REFERENCES `customer` (`idCustomer`);
 
 --
