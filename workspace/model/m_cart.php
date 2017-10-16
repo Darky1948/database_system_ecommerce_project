@@ -54,7 +54,20 @@ class m_cart {
         $delete_cart->bindValue(1, $idCustomer, PDO::PARAM_INT);
         $delete_cart->bindValue(2, $idArticle, PDO::PARAM_INT);
         
-        return $delete_order->execute();
+        $return = $delete_cart->execute();
+        $this->database->commit();
+        return $return;
+    }
+    
+    public function delete_cart_by_idCustomer($idCustomer) {
+        $this->database->beginTransaction();
+        
+        $delete_cart_by_idCustomer = $this->database->prepare('DELETE FROM cart WHERE idCustomer = ?');
+        $delete_cart_by_idCustomer->bindValue(1, $idCustomer, PDO::PARAM_INT);
+
+        $return = $delete_cart_by_idCustomer->execute();
+        $this->database->commit();
+        return $return;
     }
 
     /*

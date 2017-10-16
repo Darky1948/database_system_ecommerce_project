@@ -52,7 +52,10 @@
     /**** TREATMENT ***/      
     
     if(isset($_POST['delete']) && $_POST['idArticle']) {
+        $return = $m_cart->delete_cart($_SESSION['id'], $_POST['idArticle']);
+        
         $c_cart->deleteArticle($_POST['idArticle']);
+        
         header('Location: '. ADRESSE_ABSOLUE_URL . 'myCart');
     }
    

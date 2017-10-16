@@ -50,9 +50,9 @@
                                         </td>
                                         <td class="col-sm-1 col-md-1 text-center"><strong>$<?php echo $price; ?></strong></td>
                                         <td class="col-sm-1 col-md-1 text-center"><strong>$<?php echo $price*$c_cart->countArticles($article->idArticle); ?></strong></td>
-                                        <td class="col-sm-1 col-md-1">
-                                            <form role="form" id="cart-form" name="cart-form" class="form" action="" method="POST">
-                                                <input type="hidden" name="idArticle" id="idArticle" value="<?php echo $article->idArticle; ?>">
+                                        <td class="col-sm-1 col-md-1">  
+                                            <form action="" method="POST">
+                                                <input type="hidden" name="idArticle" value="<?php echo $article->idArticle; ?>">
                                                 <button type="submit" class="btn btn-danger" name="delete">
                                                     <span class="glyphicon glyphicon-remove"></span> Remove
                                                 </button>
