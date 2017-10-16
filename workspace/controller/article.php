@@ -77,27 +77,55 @@
             }else {
                 $quantity = $_POST['quantity'];
                 $articleForm = $m_article->get_article($idArticle);
-
+                $articleQuantityAlready = 0;
 
                 if($c_cart->creatingCart()) {
                     // Vérifie si on a déjà cet article et si c'est le cas comtpé combien on a déjà.
+                    $articleQuantityAlready = $c_cart->quantityArticle($articleForm->idArticle);
                 }
-
+                
+                // On ajoute à la quantité sélectionné ce qu'il a déjà dans son panier
+                $quantityTotal = $quantity + $articleQuantityAlready;
+                
+                echo 'quantity ' . $quantity .'<br>';
+                echo 'ce que jai dans le panier ' . $articleQuantityAlready . '<br>';
+                
                 // First basical check
                 if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
-                    $cartQuantity = $m_cart->count_cart_article($_SESSION['id'], $idArticle);
+                    // On compte combien de gens on déjà mis d'article dans le panier cart en bdd
+                    $cartQuantities = $m_cart->count_cart_article($idArticle);
 
-                    $realAvailableStock = $articleForm->quantity - $cartQuantity;
+                    $realAvailableStock = $articleForm->quantity;
+                    // If we have something we compute the quantity
+                    if($cartQuantities) {
+                        $cartQuantity = 0;
+                        foreach ($cartQuantities as $qt) {
+                            $cartQuantity = $cartQuantity + $qt->quantity;
+                        }
+                        echo  'Quantité de cet article en bdd ' . $cartQuantity . '<br>';
+                        $realAvailableStock = $realAvailableStock - $cartQuantity;
+                    }
+                    
+                    echo  ' realAvailableStock ' . $realAvailableStock  . '<br>';
 
                     // That means there is enough stock
                     if($quantity <= $realAvailableStock) {
                         // Creating the cart
                         $c_cart->creatingCart();
-
-                        // Adding a product to our cart
+                        
+                        // That means we have already something in database
+                        if($m_cart->get_article($_SESSION['id'], $articleForm->idArticle)) {
+                            // Upding a product to our database cart
+                            $m_cart->update_cart($_SESSION['id'], $articleForm->idArticle, (int) $quantityTotal);
+                        } else {
+                            // Adding a product to our database cart
+                            $m_cart->add_cart($_SESSION['id'], $articleForm->idArticle, $quantity);
+                        }
+             
+                        // Adding a product to our session cart
                         $c_cart->addProduct($articleForm->idArticle, $quantity, $articleForm->price);
-
-                        header('Location: '.ADRESSE_ABSOLUE_URL.'myCart');
+                    }else {
+                        $return = 6;
                     }
                 }else {
                     $return = 5;

@@ -132,6 +132,24 @@ class c_cart {
     }
     
     /*
+     * Return the quantity of a specified article
+     */
+    function quantityArticle($productId) {
+        //If the cart exist and is not lock
+        if ($this->creatingCart() && !$this->isLock()) {
+            //Search the product in the cart
+            $index = array_search($productId,  $_SESSION['cart']['productId']);
+
+            if ($index !== false) {
+               return $_SESSION['cart']['productQuantity'][$index];
+            }
+
+        } else {
+            echo "An error occured please contact administrator.";
+        }
+    }
+    
+    /*
      * Delete the cart
      */
     function deleteCart(){

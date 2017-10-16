@@ -11,7 +11,7 @@
     $return_codes[3]  = 'You have to be connected to do this operation';
     $return_codes[4]  = 'Error during the submission. Try again.';
     $return_codes[5] = 'Sorry the quantity choosen do not correspond to our stock.';
-    $return_codes[6] = '';
+    $return_codes[6] = 'It seems that we run out of stock';
     $return_codes[7] = '';
     $return_codes[8] = '';
     $return_codes[9] = '';
