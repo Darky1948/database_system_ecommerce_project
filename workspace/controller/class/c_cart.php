@@ -58,7 +58,7 @@ class c_cart {
             $tmp['productId'] = array();
             $tmp['productQuantity'] = array();
             $tmp['productPrice'] = array();
-            $tmp['lock'] = $_SESSION['cart']['Lock'];
+            $tmp['lock'] = $_SESSION['cart']['lock'];
 
            for($i = 0; $i < count($_SESSION['cart']['productId']); $i++) {
                 if ($_SESSION['cart']['productId'][$i] !== $productId) {
@@ -69,7 +69,7 @@ class c_cart {
 
             }
             // We replace the cart in session by our tmp cart which is update
-            $_SESSION['panier'] =  $tmp;
+            $_SESSION['cart'] =  $tmp;
             //Just delete the tmp carte
             unset($tmp);
         } else {

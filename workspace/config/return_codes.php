@@ -8,9 +8,9 @@
     /* RETURN CODES */
     $return_codes[1]  = 'User login or password wrong !';
     $return_codes[2]  = 'User login or password empty';
-    $return_codes[3]  = '';
-    $return_codes[4]  = '';
-    $return_codes[5] = '';
+    $return_codes[3]  = 'You have to be connected to do this operation';
+    $return_codes[4]  = 'Error during the submission. Try again.';
+    $return_codes[5] = 'Sorry the quantity choosen do not correspond to our stock.';
     $return_codes[6] = '';
     $return_codes[7] = '';
     $return_codes[8] = '';

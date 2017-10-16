@@ -14,6 +14,8 @@
                     $_SESSION['id'] = $verification->idCustomer;
                     $_SESSION['time'] = time();
                     $_SESSION['email'] = $verification->email;
+                    $_SESSION['firstname'] = $verification->firstname;
+                    $_SESSION['lastname'] = $verification->lastname;
                     return 0;
                 }else{
                     return 1;

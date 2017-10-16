@@ -1,3 +1,21 @@
+<?php
+    if(isset($return) && $return != -1) {
+?>
+        <!-- Error -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong><?php echo $return_codes[$return]; ?></strong>
+                      </div>
+                </div>
+            </div>
+        </div>
+<?php
+    }
+?>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6">
@@ -32,7 +50,8 @@
                         </select>
                     </div>
                     <input type="hidden" name="idArticle" id="idArticle" value="<?php echo $article->idArticle; ?>">
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
+                    <?php if($_SESSION['id'] == -1) { echo '<p style="color:red;">You have to be connected to purschase a product.</p>'; } ?>
+                    <button type="submit" class="btn btn-success"  <?php if($_SESSION['id'] == -1) { echo 'disabled'; } ?>><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to cart</button>
                 </form>
             </div>
         </div>
@@ -48,12 +67,13 @@
     <form role="form" id="contact-form" class="contact-form" action="" method="POST">
         <div class="row well">
             <div class="col-md-12">
+                 <?php if($_SESSION['id'] == -1) { echo '<p style="color:red;">You have to be connected to comment this product.</p>'; } ?>
                 <div class="form-group">
-                    <textarea class="form-control textarea" rows="3" name="message" id="message" placeholder="Message"></textarea>
+                    <textarea class="form-control textarea" rows="3" name="message" id="message" placeholder="Message" <?php if($_SESSION['id'] == -1) { echo 'disabled'; } ?>></textarea>
                 </div>
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn btn-info pull-right">Leave a comment</button>
+                <button type="submit" class="btn btn-info pull-right" <?php if($_SESSION['id'] == -1) { echo 'disabled'; } ?>>Leave a comment</button>
             </div>
         </div>
     </form>

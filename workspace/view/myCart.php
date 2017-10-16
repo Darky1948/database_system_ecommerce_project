@@ -22,11 +22,12 @@
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
                                         <td>&nbsp;</td>
-                                        <td>&nbsp;/td>
+                                        <td>&nbsp;</td>
                                         <td>
-                                        <a href="'. ADRESSE_ABSOLUE_URL . 'checkout' .'" type="button" class="btn btn-success">
-                                            Checkout <span class="glyphicon glyphicon-play"></span>
-                                        </a></td>
+                                            <a href="' .ADRESSE_ABSOLUE_URL . 'articles' . '" type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-shopping-cart"></span> Go to the shop
+                                            </a>
+                                        </td>
                                     </tr>';
                             } else {
                                 for ($i=0 ;$i < $nbArticles ; $i++) {
@@ -52,7 +53,7 @@
                                         <td class="col-sm-1 col-md-1">
                                             <form role="form" id="cart-form" name="cart-form" class="form" action="" method="POST">
                                                 <input type="hidden" name="idArticle" id="idArticle" value="<?php echo $article->idArticle; ?>">
-                                                <button type="submit" class="btn btn-danger">
+                                                <button type="submit" class="btn btn-danger" name="delete">
                                                     <span class="glyphicon glyphicon-remove"></span> Remove
                                                 </button>
                                             </form>

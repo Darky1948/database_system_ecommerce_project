@@ -17,7 +17,7 @@ class m_articleType {
      * Get all the articles type.
      */
     public function get_articles_type() {
-        $get_articles_type = $this->database->prepare('SELECT * FROM articleType');
+        $get_articles_type = $this->database->prepare('SELECT * FROM articletype');
 
         $get_articles_type->execute();
 
@@ -31,7 +31,7 @@ class m_articleType {
      * Get an article type by its id.
      */
     public function get_article_type($idType){
-        $get_article_type = $this->database->prepare('SELECT * FROM articleType WHERE idType = ?');
+        $get_article_type = $this->database->prepare('SELECT * FROM articletype WHERE idType = ?');
 
         $get_article_type->bindValue(1, $idType, PDO::PARAM_INT);
         $get_article_type->execute();
@@ -46,7 +46,7 @@ class m_articleType {
      * Update an article type.
      */
     public function update_article_type($idType, $libelle, $valid, $reg_date, $idCategory){
-        $update_article_type = $this->database->prepare('UPDATE articleType SET libelle = ?, valid = ?, reg_date = ?, idCategory = ? WHERE idType = ?');
+        $update_article_type = $this->database->prepare('UPDATE articletype SET libelle = ?, valid = ?, reg_date = ?, idCategory = ? WHERE idType = ?');
 
         $update_article_type->bindValue(1, $libelle, PDO::PARAM_STR);
         $update_article_type->bindValue(2, $valid, PDO::PARAM_BOOL);
@@ -62,7 +62,7 @@ class m_articleType {
      * Delete an article type by its ID.
      */
     public function delete_article_type($idType){
-        $delete_article = $this->database->prepare('DELETE FROM articleType WHERE idType = ?');
+        $delete_article = $this->database->prepare('DELETE FROM articletype WHERE idType = ?');
         $delete_article->bindValue(1, $idType, PDO::PARAM_INT);
         return $delete_article->execute();
     }

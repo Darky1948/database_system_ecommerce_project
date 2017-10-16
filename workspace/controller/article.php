@@ -68,37 +68,52 @@
      * Handle the add cart action
      */  
     $return = -1;
-    if(isset($_POST['quantity']) && isset($_POST['idArticle'])) {
-        $quantity = $_POST['quantity'];
-        $articleForm = $m_article->get_article($idArticle);
-        
-        
-        if($c_cart->creatingCart()) {
-            // Vérifie si on a déjà cet article et si c'est le cas comtpé combien on a déjà.
-        }
-        
-        // First basical check
-        if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
-            $cartQuantity = $m_cart->count_cart_article($_SESSION['id'], $idArticle);
-            
-            $realAvailableStock = $articleForm->quantity - $cartQuantity;
+    
+    if(count($_POST) > 0) {
+        if(isset($_POST['quantity']) && isset($_POST['idArticle'])) {
+            // Is it connected ?
+            if($_SESSION['id'] == -1) {
+               $return = 3;
+            }else {
+                $quantity = $_POST['quantity'];
+                $articleForm = $m_article->get_article($idArticle);
 
-            // That means there is enough stock
-            if($quantity <= $realAvailableStock) {
-                // Creating the cart
-                $c_cart->creatingCart();
-                
-                // Adding a product to our cart
-                $c_cart->addProduct($articleForm->idArticle, $quantity, $articleForm->price);
-                
-                header('Location: '.ADRESSE_ABSOLUE_URL.'myCart');
-            }
-        }else {
-            //error
+
+                if($c_cart->creatingCart()) {
+                    // Vérifie si on a déjà cet article et si c'est le cas comtpé combien on a déjà.
+                }
+
+                // First basical check
+                if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
+                    $cartQuantity = $m_cart->count_cart_article($_SESSION['id'], $idArticle);
+
+                    $realAvailableStock = $articleForm->quantity - $cartQuantity;
+
+                    // That means there is enough stock
+                    if($quantity <= $realAvailableStock) {
+                        // Creating the cart
+                        $c_cart->creatingCart();
+
+                        // Adding a product to our cart
+                        $c_cart->addProduct($articleForm->idArticle, $quantity, $articleForm->price);
+
+                        header('Location: '.ADRESSE_ABSOLUE_URL.'myCart');
+                    }
+                }else {
+                    $return = 5;
+                }
+            } 
+        } elseif (isset($_POST['message'])) { // If there is a comment that is posted
+            var_dump($_SESSION);
+            $message = htmlspecialchars(trim($_POST['message']));
+            $articleForm = $m_article->get_article($idArticle);
+            $idCustomer = $_SESSION['id'];
+            
+            $execution = $m_comment->add_comment($message, $articleForm->idArticle, $idCustomer);
+            header('Location: '.ADRESSE_ABSOLUE_URL.'article/' . $articleForm->idArticle);
+        } else {
+            $return = 4;
         }
-        
-    } else {
-        //error
     }
 
 ?>

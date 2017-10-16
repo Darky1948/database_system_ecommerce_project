@@ -46,9 +46,14 @@
     $c_session->session();
 
     $page_name = 'My Cart';
+    
+    if($_SESSION['id'] == -1) header('Location: home');
 
-
-    /**** TREATMENT ***/    
-    //var_dump($_SESSION);
+    /**** TREATMENT ***/      
+    
+    if(isset($_POST['delete']) && $_POST['idArticle']) {
+        $c_cart->deleteArticle($_POST['idArticle']);
+        header('Location: '. ADRESSE_ABSOLUE_URL . 'myCart');
+    }
    
 ?>
