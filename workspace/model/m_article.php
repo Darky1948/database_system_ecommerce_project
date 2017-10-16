@@ -92,7 +92,7 @@ class m_article {
      * Update an article.
      */
     public function update_article($idArticle, $libelle, $price, $quantity, $article_size, $color, $reg_date, $idType, $idBrand, $idMedia){
-        $update_article = $this->database->prepare('UPDATE article SET $libelle = ?, $price = ?, $quantity = ?, $article_size = ?, $color = ?, $reg_date = ?, $idType = ?, $idBrand = ?, $idMedia = ? WHERE idArticle = ?');
+        $update_article = $this->database->prepare('UPDATE article SET libelle = ?, price = ?, quantity = ?, article_size = ?, color = ?, reg_date = ?, idType = ?, idBrand = ?, idMedia = ? WHERE idArticle = ?');
 
         $update_article->bindValue(1, $libelle, PDO::PARAM_STR);
         $update_article->bindValue(2, $price, PDO::PARAM_STR);
@@ -107,6 +107,21 @@ class m_article {
         // Return wheter true of false.
         return $update_article->execute();
     } 
+    
+    /*
+     * Update an article quantity.
+     */
+    public function update_article_quantity($idArticle, $quantity){
+        $this->database->beginTransaction();
+        
+        $update_article = $this->database->prepare('UPDATE article SET quantity = ? WHERE idArticle = ?');
+        $update_article->bindValue(1, $quantity, PDO::PARAM_INT);
+        $update_article->bindValue(2, $idArticle, PDO::PARAM_INT);
+                
+        $return = $update_article->execute();
+        $this->database->commit();
+        return $return;
+    }
 
     /*
      * Delete an article by its ID.
@@ -136,6 +151,7 @@ class m_article {
 
         return $add_articles->execute();
     }
+    
     /*
      * Search article witht the given words
      */

@@ -87,8 +87,6 @@
                 // On ajoute à la quantité sélectionné ce qu'il a déjà dans son panier
                 $quantityTotal = $quantity + $articleQuantityAlready;
                 
-                echo 'quantity ' . $quantity .'<br>';
-                echo 'ce que jai dans le panier ' . $articleQuantityAlready . '<br>';
                 
                 // First basical check
                 if($quantity > 0 && $quantity <= $articleForm->quantity && $idArticle == $_POST['idArticle']) {
@@ -102,11 +100,9 @@
                         foreach ($cartQuantities as $qt) {
                             $cartQuantity = $cartQuantity + $qt->quantity;
                         }
-                        echo  'Quantité de cet article en bdd ' . $cartQuantity . '<br>';
+
                         $realAvailableStock = $realAvailableStock - $cartQuantity;
                     }
-                    
-                    echo  ' realAvailableStock ' . $realAvailableStock  . '<br>';
 
                     // That means there is enough stock
                     if($quantity <= $realAvailableStock) {
@@ -124,6 +120,8 @@
              
                         // Adding a product to our session cart
                         $c_cart->addProduct($articleForm->idArticle, $quantity, $articleForm->price);
+                        
+                        header('Location: '.ADRESSE_ABSOLUE_URL.'myCart/');
                     }else {
                         $return = 6;
                     }

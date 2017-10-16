@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 16 Octobre 2017 à 11:19
+-- Généré le :  Lun 16 Octobre 2017 à 16:41
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -96,10 +96,10 @@ INSERT INTO `article` (`idArticle`, `libelle`, `price`, `quantity`, `article_siz
 (34, 'AJIO Printed Crew-Neck T-shirt', '160', 5, 'L', 'Yellow', '2017-10-14 13:35:34', 9, 5, 34),
 (35, 'AJIO Typographic Print Crew-Neck T-shirt', '200', 5, 'L', 'Blue', '2017-10-14 13:35:34', 9, 6, 35),
 (36, 'AJIO Printed Crew-Neck T-shirt', '200', 5, 'L', 'Grey', '2017-10-14 13:35:34', 9, 7, 36),
-(37, 'KOOVS Extreme Scoop Neck T-Shirt', '399', 5, 'L', 'Green', '2017-10-14 13:37:25', 10, 8, 37),
-(38, 'KOOVS Scoop Neck T-Shirt', '395', 5, 'L', 'Black', '2017-10-14 13:37:25', 10, 1, 38),
-(39, 'Blue Saint Exclusive Scoop Neck T-Shirt', '399', 5, 'L', 'Blue Saint', '2017-10-14 13:37:25', 10, 2, 39),
-(40, 'KOOVS Extreme Scoop Neck T-Shirt', '399', 5, 'L', 'Kind of white', '2017-10-14 13:37:26', 10, 3, 40);
+(37, 'KOOVS Extreme Scoop Neck T-Shirt', '399', 5, 'L', 'Green', '2017-10-16 16:40:54', 10, 8, 37),
+(38, 'KOOVS Scoop Neck T-Shirt', '395', 5, 'L', 'Black', '2017-10-16 16:40:54', 10, 1, 38),
+(39, 'Blue Saint Exclusive Scoop Neck T-Shirt', '399', 5, 'L', 'Blue Saint', '2017-10-16 16:40:54', 10, 2, 39),
+(40, 'KOOVS Extreme Scoop Neck T-Shirt', '399', 5, 'L', 'Kind of white', '2017-10-16 16:40:54', 10, 3, 40);
 
 -- --------------------------------------------------------
 
@@ -330,7 +330,9 @@ INSERT INTO `comment` (`idComment`, `text`, `reg_date`, `idArticle`, `idCustomer
 (353, 'Suspendisse', '2017-10-16 10:11:04', 32, 1),
 (354, 'Cras sed leo. Cras vehicula aliquet libero. Integer in magna.', '2017-10-16 10:11:04', 40, 4),
 (355, 'Donec est. Nunc ullamcorper, velit', '2017-10-16 10:11:04', 38, 1),
-(356, 'test', '2017-10-16 10:15:06', 40, 1);
+(356, 'test', '2017-10-16 10:15:06', 40, 1),
+(357, 'bitoku', '2017-10-16 14:22:35', 40, 1),
+(358, 'The project is finished', '2017-10-16 16:38:17', 40, 1);
 
 -- --------------------------------------------------------
 
@@ -434,13 +436,6 @@ CREATE TABLE `orders` (
   `idCustomer` int(10) UNSIGNED DEFAULT NULL,
   `idArticle` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `orders`
---
-
-INSERT INTO `orders` (`idOrder`, `quantity`, `Ordering_date`, `idCustomer`, `idArticle`) VALUES
-(1, 1, '2017-10-15 13:53:24', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -567,7 +562,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT pour la table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `idComment` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=361;
+  MODIFY `idComment` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=359;
 --
 -- AUTO_INCREMENT pour la table `customer`
 --
@@ -582,7 +577,7 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT pour la table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `idOrder` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idOrder` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT pour la table `recommandedarticle`
 --

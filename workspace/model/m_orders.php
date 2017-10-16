@@ -57,11 +57,27 @@ class m_orders {
         return $retour;
     }
     
+        /*
+     * Get an order by its customer and article id.
+     */
+    public function get_order_by_customer_article_ids($idCustomer, $idArticle){
+        $get_order_by_customer_id = $this->database->prepare('SELECT * FROM orders WHERE idCustomer = ? AND idArticle = ?');
+
+        $get_order_by_customer_id->bindValue(1, $idCustomer, PDO::PARAM_INT);
+        $get_order_by_customer_id->bindValue(2, $idArticle, PDO::PARAM_INT);
+        $get_order_by_customer_id->execute();
+
+        $retour = $get_order_by_customer_id->fetch(PDO::FETCH_OBJ);
+        $get_order_by_customer_id->closeCursor();
+
+        return $retour;
+    }
+    
     /*
      * Update a order.
      */
     public function update_order($idOrder, $quantity, $Ordering_date, $idCustomer, $idArticle){
-        $update_order = $this->database->prepare('UPDATE brand SET quantity = ?, Ordering_date = ?, idCustomer = ?, idArticle = ? WHERE idOrder = ?');
+        $update_order = $this->database->prepare('UPDATE orders SET quantity = ?, Ordering_date = ?, idCustomer = ?, idArticle = ? WHERE idOrder = ?');
 
         $update_order->bindValue(1, $quantity, PDO::PARAM_INT);
         $update_order->bindValue(2, $Ordering_date, PDO::PARAM_STR);
@@ -85,13 +101,13 @@ class m_orders {
     /*
      * Add a order type with given param.
      */
-    public function add_order($quantity, $Ordering_date, $idCustomer){
-        $add_order = $this->database->prepare('INSERT INTO brand (quantity, Ordering_date, idCustomer) 
-        values (?, ?, ?) ');
+    public function add_order($quantity, $idCustomer, $idArticle){
+        $add_order = $this->database->prepare('INSERT INTO orders (quantity, Ordering_date, idCustomer, idArticle) 
+        values (?, CURRENT_TIMESTAMP, ?, ?) ');
 
         $add_order->bindValue(1, $quantity, PDO::PARAM_INT);
-        $add_order->bindValue(2, $Ordering_date, PDO::PARAM_STR);
-        $add_order->bindValue(3, $idCustomer, PDO::PARAM_INT);
+        $add_order->bindValue(2, $idCustomer, PDO::PARAM_INT);
+        $add_order->bindValue(3, $idArticle, PDO::PARAM_INT);
 
         return $add_order->execute();
     }

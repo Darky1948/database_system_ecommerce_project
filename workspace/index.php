@@ -82,9 +82,9 @@
     }else if(file_exists('webservices/'.$page.'.php') && in_array($page, $existing_web_services)){
     	include('webservices/'.$page.'.php');
     }else{ /* ERROR CASE */
-        include('controller/erreur.php');
+        include('controller/error.php');
         include('view/header.php');
-        include('view/erreur.php');
+        include('view/error.php');
         include('view/footer.php');
     }
 
